@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="950.0" styleClass="final-background" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <children>
+    <Rectangle id="animation_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#16a086" height="677.0" layoutX="-15.0" layoutY="608.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="980.0" />
+  </children>
+</AnchorPane>

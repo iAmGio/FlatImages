@@ -1,0 +1,22 @@
+.background, .check-box {
+    -fx-background-color: #16A086;
+}
+
+.final-background {
+    -fx-background-color: #1bbc9b
+}
+
+.error {
+	-fx-border-color: red;
+    -fx-focus-color: red;
+}
+
+.text {
+    -fx-text-fill: #00FFCB;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 14pt;
+}
+
+.text-field, .button, .color-picker {
+    -fx-background-color: #FFF;
+}

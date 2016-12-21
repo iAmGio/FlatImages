@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0002288818359" prefWidth="949.9998779296875" styleClass="background" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <children>
+    <Rectangle id="preview_rectangle" arcHeight="5.0" arcWidth="5.0" height="238.25" layoutX="-8.0" layoutY="-8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="" width="974.0">
+      <fill>
+        <Color blue="0.608" green="0.737" red="0.106" fx:id="x1" />
+      </fill>
+    </Rectangle>
+    <ImageView id="preview_img" fitHeight="136.25" fitWidth="181.66666666666666" layoutX="384.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true" style="&#10;">
+      <image>
+        <Image url="@../assets/img.png" />
+      </image>
+    </ImageView>
+    <Text fill="$x1" layoutX="2.0" layoutY="597.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FlatImages by iAmGio">
+      <font>
+        <Font name="Segoe UI" size="15.0" fx:id="x2" />
+      </font>
+    </Text>
+    <TextField id="filepath_field" editable="false" layoutX="287.0" layoutY="276.0" opacity="1.0" prefHeight="48.0" prefWidth="375.0" promptText="" />
+    <Button id="upload_button" layoutX="225.0" layoutY="276.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="53.0" text="..." />
+    <TextField id="width_field" layoutX="375.0" layoutY="363.0" prefWidth="135.0146484375" visible="false" />
+    <TextField id="height_field" layoutX="520.0" layoutY="363.0" prefWidth="136.0" visible="false" />
+    <Label id="size_text" layoutX="116.0" layoutY="369.0" styleClass="text" text="What is the desidered size?" visible="false" />
+    <ColorPicker id="color_picker" layoutX="375.0" layoutY="407.0" visible="false" />
+    <Label id="bgcolor_text" layoutX="30.0" layoutY="412.0" styleClass="text" text="What background color do you want?" visible="false" />
+    <TextField id="shadow_field" layoutX="375.0" layoutY="452.0" prefWidth="115.0" text="100" visible="false" />
+    <Label id="shadow_text" layoutX="36.0" layoutY="458.0" styleClass="text" text="What's the shadow length you want?" visible="false" />
+    <Label id="shading_text" layoutX="203.0" layoutY="501.0" styleClass="text" text="Enable shading?" textAlignment="RIGHT" visible="false" />
+    <CheckBox id="shading_checkbox" layoutX="375.0" layoutY="501.0" mnemonicParsing="false" selected="true" text="" visible="false" />
+    <Label id="opacity_text" layoutX="51.0" layoutY="542.0" styleClass="text" text="What shadow opacity do you want?" visible="false" />
+    <Slider id="opacity_slider" layoutX="371.0" layoutY="543.0" prefWidth="236.0" value="85.0" visible="false">
+      <effect>
+        <Lighting diffuseConstant="2.0" specularConstant="2.0" specularExponent="13.968253968253968" surfaceScale="0.0">
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <light>
+            <javafx.scene.effect.Light.Distant />
+          </light>
+        </Lighting>
+      </effect>
+    </Slider>
+    <Button id="create_button" font="$x2" layoutX="743.0" layoutY="276.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="108.0" text="Create!" visible="false" />
+  </children>
+</AnchorPane>
