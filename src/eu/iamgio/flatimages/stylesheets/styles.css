@@ -7,7 +7,7 @@
 }
 
 .error {
-	-fx-border-color: red;
+    -fx-border-color: red;
     -fx-focus-color: red;
 }
 
