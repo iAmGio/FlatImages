@@ -5,9 +5,6 @@ import eu.iamgio.libfx.api.FXML;
 import eu.iamgio.libfx.api.JavaFX;
 import eu.iamgio.libfx.api.animations.Animation;
 import eu.iamgio.libfx.api.elements.SimpleStage;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -185,13 +182,6 @@ public class FlatImage
         //Plays the animation
         Rectangle target = ((Rectangle) JavaFX.fromId("animation_rectangle"));
         new Animation(Animation.Type.MOVEMENT_Y, -620, Duration.seconds(2), false).play(target);
-        /*Timeline timeline = new Timeline();
-        timeline.setCycleCount(0);
-        timeline.setAutoReverse(false);
-        KeyValue kv = new KeyValue(target.yProperty(), -620);
-        KeyFrame kf = new KeyFrame(Duration.seconds(2), kv);
-        timeline.getKeyFrames().add(kf);
-        timeline.play();*/
 
         //Creates the image
         ImageView imageView = new ImageView();
