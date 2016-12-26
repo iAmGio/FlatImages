@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 public class FlatImages extends Application
 {
     //Actual version
-    public static final String VERSION = "2.0.0";
+    static final String VERSION = "2.0.0";
 
     //Image is processing
     public static boolean process = false;
