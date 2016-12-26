@@ -10,7 +10,6 @@ import eu.iamgio.libfx.api.elements.SimpleStage;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -47,8 +46,9 @@ public class FlatImages extends Application
         new DropListener().registerDrop(scene);
 
         //Shows the scene
-        new SimpleStage(primaryStage).show(scene, "Flat v" + VERSION, false);
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("assets/icon.png")));
+        SimpleStage simpleStage = new SimpleStage(primaryStage);
+        simpleStage.show(scene, "Flat v" + VERSION, false);
+        simpleStage.setIcon(getClass(), "assets/icon.png");
 
         stage = primaryStage;
     }

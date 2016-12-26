@@ -177,7 +177,10 @@ public class FlatImage
         Parent root = FXML.load(FlatImages.class, "scenes/FinalScene.fxml");
         Scene scene = new Scene(root, 950, 600);
         CSS.load(FlatImages.class, scene, "stylesheets/styles.css");
-        new SimpleStage(FlatImages.stage).show(scene, "Flat v" + FlatImages.VERSION + " - Completed!", false);
+
+        SimpleStage simpleStage = new SimpleStage(FlatImages.stage);
+        simpleStage.show(scene, "Flat v" + FlatImages.VERSION + " - Completed!", false);
+        simpleStage.setIcon(FlatImages.class, "assets/icon.png");
 
         //Plays the animation
         Rectangle target = ((Rectangle) JavaFX.fromId("animation_rectangle"));
