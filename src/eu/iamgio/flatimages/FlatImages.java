@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 public class FlatImages extends Application
 {
     //Actual version
-    static final String VERSION = "2.0.0";
+    static final String VERSION = "2.0.1";
 
     //Image is processing
     public static boolean process = false;
@@ -43,7 +43,7 @@ public class FlatImages extends Application
         //Registers the events
         JavaFX.getEventManager().registerEvents(new UploaderListener());
         JavaFX.getEventManager().registerEvents(new CreateListener());
-        new DropListener().registerDrop(scene);
+        JavaFX.getEventManager().registerEvents(new DropListener());
 
         //Shows the scene
         SimpleStage simpleStage = new SimpleStage(primaryStage);

@@ -6,7 +6,7 @@ import eu.iamgio.flatimages.FlatImage;
 import eu.iamgio.flatimages.FlatImages;
 import eu.iamgio.flatimages.Utils;
 import eu.iamgio.libfx.api.JavaFX;
-import eu.iamgio.libfx.api.events.MousePressEvent;
+import eu.iamgio.libfx.api.events.mouse.MousePressEvent;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;

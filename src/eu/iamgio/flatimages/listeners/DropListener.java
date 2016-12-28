@@ -1,47 +1,31 @@
 package eu.iamgio.flatimages.listeners;
 
+import eu.iamgio.customevents.api.EventHandler;
+import eu.iamgio.customevents.api.Listener;
 import eu.iamgio.flatimages.FlatImages;
 import eu.iamgio.flatimages.Utils;
-import javafx.scene.Scene;
+import eu.iamgio.libfx.api.events.FileDropEvent;
 import javafx.scene.input.Dragboard;
-import javafx.scene.input.TransferMode;
 
 import java.io.File;
 
 /**
  * Created by Gio on 20/12/2016.
  */
-public class DropListener
+public class DropListener implements Listener
 {
-    /**
-     * Event called on drag'n'drop
-     */
-    public void registerDrop(Scene scene)
+    @EventHandler
+    public void onFileDrop(FileDropEvent e)
     {
-        scene.setOnDragOver(e ->
-        {
-            Dragboard db = e.getDragboard();
-            if(!FlatImages.process)
-                if(db.hasFiles())
-                    e.acceptTransferModes(TransferMode.COPY);
-                else
-                    e.consume();
-        });
+        if(FlatImages.process)
+            return;
 
-        scene.setOnDragDropped(e ->
+        Dragboard db = e.getDragboard();
+        if(e.success())
         {
-            Dragboard db = e.getDragboard();
-            boolean success = false;
-            if(db.hasFiles())
-            {
-                success = true;
-                File file = db.getFiles().get(0);
-                if(file.getName().endsWith(".png"))
-                    Utils.setImage(file);
-            }
-
-            e.setDropCompleted(success);
-            e.consume();
-        });
+            File file = db.getFiles().get(0);
+            if(file.getName().endsWith(".png"))
+                Utils.setImage(file);
+        }
     }
 }

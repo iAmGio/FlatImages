@@ -4,11 +4,11 @@ import eu.iamgio.customevents.api.EventHandler;
 import eu.iamgio.customevents.api.Listener;
 import eu.iamgio.flatimages.Utils;
 import eu.iamgio.libfx.api.JavaFX;
-import eu.iamgio.libfx.api.events.MousePressEvent;
+import eu.iamgio.libfx.api.events.mouse.MousePressEvent;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
+import eu.iamgio.libfx.api.filemanagers.FileChooser;
 
 import java.io.File;
 
@@ -29,11 +29,10 @@ public class UploaderListener implements Listener
             {
                 //Loads the file from the chooser
                 FileChooser fileChooser = new FileChooser();
-                FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
-                fileChooser.getExtensionFilters().addAll(extFilterPNG);
-                File file = fileChooser.showOpenDialog(null);
+                File file = fileChooser.choose("png");
 
-                if(file != null) Utils.setImage(file);
+                if(file != null)
+                    Utils.setImage(file);
             }
         }
     }
