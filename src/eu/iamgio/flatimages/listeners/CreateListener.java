@@ -28,12 +28,14 @@ public class CreateListener implements Listener
             if(button.getId().equals("create_button"))
             {
                 //Gets width, height and length (not as numbers)
-                TextField widthField = ((TextField) JavaFX.fromId("width_field"));
-                TextField heightField = ((TextField) JavaFX.fromId("height_field"));
-                TextField lengthField = ((TextField) JavaFX.fromId("shadow_field"));
+                TextField widthField = (TextField) JavaFX.fromId("width_field");
+                TextField heightField = (TextField) JavaFX.fromId("height_field");
+                TextField lengthField = (TextField) JavaFX.fromId("shadow_field");
 
                 //Removes eventual error borders
-                Utils.removeError(widthField); Utils.removeError(heightField); Utils.removeError(lengthField);
+                Utils.removeError(widthField);
+                Utils.removeError(heightField);
+                Utils.removeError(lengthField);
 
                 boolean canBuild = true;
 
@@ -41,8 +43,7 @@ public class CreateListener implements Listener
                 try
                 {
                     int width = Integer.parseInt(widthField.getText());
-                    if(width <= 0)
-                        throw new Exception();
+                    if(width <= 0) throw new Exception();
                 }
                 catch(Exception ex)
                 {
@@ -54,8 +55,7 @@ public class CreateListener implements Listener
                 try
                 {
                     int height = Integer.parseInt(heightField.getText());
-                    if(height <= 0)
-                        throw new Exception();
+                    if(height <= 0) throw new Exception();
                 }
                 catch(Exception ex)
                 {
@@ -67,8 +67,7 @@ public class CreateListener implements Listener
                 try
                 {
                     int length = Integer.parseInt(lengthField.getText());
-                    if(length < 0)
-                        throw new Exception();
+                    if(length < 0) throw new Exception();
                 }
                 catch(Exception ex)
                 {

@@ -8,9 +8,7 @@ import eu.iamgio.libfx.api.elements.SimpleStage;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Slider;
+import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,6 +23,7 @@ import javafx.util.Duration;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -37,6 +36,7 @@ public class FlatImage
     private int height;
     private Color color;
     private double length;
+    private BackgroundType backgroundType;
 
     private BufferedImage bg;
     private BufferedImage image;
@@ -54,6 +54,8 @@ public class FlatImage
         this.color = new Color(
                 (float) color.getRed(), (float) color.getGreen(), (float) color.getBlue());
         this.length = Integer.parseInt(((TextField) JavaFX.fromId("shadow_field")).getText());
+        this.backgroundType = BackgroundType.valueOf(((ComboBox) JavaFX.fromId("bgtype_combobox"))
+                .getSelectionModel().getSelectedItem().toString().toUpperCase());
     }
 
     /**
@@ -63,12 +65,23 @@ public class FlatImage
     public FlatImage setBackground()
     {
         //Creates a new image
-        BufferedImage bg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        BufferedImage bg = new BufferedImage(width, height, BufferedImage.TRANSLUCENT);
         Graphics2D graphics = bg.createGraphics();
 
-        //Paints it
-        graphics.setPaint(color);
-        graphics.fillRect(0, 0, width, height);
+        switch(backgroundType)
+        {
+            case FILL:
+                //Paints it
+                graphics.setPaint(color);
+                graphics.fillRect(0, 0, width, height);
+                break;
+            case CIRCLE:
+                //Draws a circle
+                graphics.setColor(color);
+                graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                        RenderingHints.VALUE_ANTIALIAS_ON);
+                graphics.fill(new Ellipse2D.Float(0, 0, width, height));
+        }
 
         this.bg = bg;
 
@@ -87,7 +100,7 @@ public class FlatImage
 
         //Draws the uploaded one
         graphics.drawImage(
-                img, flat.getWidth() / 20, flat.getHeight() / 20, img.getWidth(), img.getHeight(),
+                img, flat.getWidth() / 50, flat.getHeight() / 50, img.getWidth(), img.getHeight(),
                 null);
 
         this.image = flat;
@@ -110,8 +123,10 @@ public class FlatImage
 
         for(int y = 1; y < height; y++)
             for(int x = 1; x < width; x++)
+            {
                 //Now we can select all the pixels
-                if(image.getRGB(x - 1, y - 1) != 0 && image.getRGB(x, y) == 0) //Checks if the high left pixel is colored
+                if(image.getRGB(x - 1, y - 1) != 0 && image.getRGB(x, y) == 0 //Checks if the high left pixel is colored
+                        && bg.getRGB(x, y) != 0) //Checks if the current pixel in the background is colored
                 {
                     if(((CheckBox) JavaFX.fromId("shading_checkbox")).isSelected())
                         //Decreases the opacity
@@ -121,6 +136,7 @@ public class FlatImage
                     //Refreshes the RGB
                     image.setRGB(x, y, shadowColor.getRGB());
                 }
+            }
 
         this.image = image;
 

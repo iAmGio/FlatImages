@@ -4,6 +4,7 @@ import eu.iamgio.libfx.api.JavaFX;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
@@ -25,6 +26,7 @@ public class Utils
      * Refreshes the image
      * @param file Image file
      */
+    @SuppressWarnings("unchecked")
     public static void setImage(File file)
     {
         try
@@ -46,6 +48,10 @@ public class Utils
             //Sets the height in the field
             ((TextField) JavaFX.fromId("height_field")).setText(
                     bufferedImage.getHeight() + bufferedImage.getHeight()/2 + "");
+            //Sets the background type value in the box
+            ComboBox box = (ComboBox) JavaFX.fromId("bgtype_combobox");
+            box.getItems().addAll("Fill", "Circle");
+            box.getSelectionModel().select(0);
         }
         catch(IOException e)
         {

@@ -14,9 +14,9 @@
 .text {
     -fx-text-fill: #00FFCB;
     -fx-font-family: "Segoe UI";
-    -fx-font-size: 14pt;
+    -fx-font-size: 11pt;
 }
 
-.text-field, .button, .color-picker {
+.text-field, .button, .color-picker, .combo-box {
     -fx-background-color: #FFF;
 }
