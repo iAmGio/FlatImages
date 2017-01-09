@@ -15,18 +15,15 @@ import javafx.scene.text.Text;
 /**
  * Created by Gio on 20/12/2016.
  */
-public class CreateListener implements Listener
-{
+public class CreateListener implements Listener {
+
     @EventHandler
-    public void click(MousePressEvent e)
-    {
-        if(e.getMouseEvent().getTarget() instanceof Button || e.getMouseEvent().getTarget() instanceof Text)
-        {
+    public void click(MousePressEvent e) {
+        if(e.getMouseEvent().getTarget() instanceof Button || e.getMouseEvent().getTarget() instanceof Text) {
             Button button = JavaFX.fromNode(((Node) e.getMouseEvent().getTarget()), Button.class);
             if(button == null) return;
 
-            if(button.getId().equals("create_button"))
-            {
+            if(button.getId().equals("create_button")) {
                 //Gets width, height and length (not as numbers)
                 TextField widthField = (TextField) JavaFX.fromId("width_field");
                 TextField heightField = (TextField) JavaFX.fromId("height_field");
@@ -40,43 +37,36 @@ public class CreateListener implements Listener
                 boolean canBuild = true;
 
                 //Checks the validity of the width
-                try
-                {
+                try {
                     int width = Integer.parseInt(widthField.getText());
                     if(width <= 0) throw new Exception();
                 }
-                catch(Exception ex)
-                {
+                catch(Exception ex) {
                     Utils.addError(widthField);
                     canBuild = false;
                 }
 
                 //Same for the height
-                try
-                {
+                try {
                     int height = Integer.parseInt(heightField.getText());
                     if(height <= 0) throw new Exception();
                 }
-                catch(Exception ex)
-                {
+                catch(Exception ex) {
                     Utils.addError(heightField);
                     canBuild = false;
                 }
 
                 //Same for the length
-                try
-                {
+                try {
                     int length = Integer.parseInt(lengthField.getText());
                     if(length < 0) throw new Exception();
                 }
-                catch(Exception ex)
-                {
+                catch(Exception ex) {
                     Utils.addError(lengthField);
                     canBuild = false;
                 }
 
-                if(canBuild)
-                {
+                if(canBuild) {
                     FlatImages.process = true;
                     new FlatImage().setBackground().setImage().applyShadow().build();
                 }

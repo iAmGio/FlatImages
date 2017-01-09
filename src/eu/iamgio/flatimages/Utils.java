@@ -16,8 +16,8 @@ import java.io.IOException;
 /**
  * Created by Gio on 20/12/2016.
  */
-public class Utils
-{
+public class Utils {
+
     //Current image
     static BufferedImage bufferedImage;
     static File imageFile;
@@ -27,10 +27,8 @@ public class Utils
      * @param file Image file
      */
     @SuppressWarnings("unchecked")
-    public static void setImage(File file)
-    {
-        try
-        {
+    public static void setImage(File file) {
+        try {
             imageFile = file;
 
             //Loads a buffered image from the file
@@ -43,41 +41,47 @@ public class Utils
             //Sets the filepath
             ((TextField) JavaFX.fromId("filepath_field")).setText(file.getAbsolutePath());
             //Sets the width in the field
-            ((TextField) JavaFX.fromId("width_field")).setText(
-                    bufferedImage.getWidth() + bufferedImage.getWidth()/2 + "");
+            ((TextField) JavaFX.fromId("width_field"))
+                    .setText(bufferedImage.getWidth() + bufferedImage.getWidth() / 2 + "");
             //Sets the height in the field
-            ((TextField) JavaFX.fromId("height_field")).setText(
-                    bufferedImage.getHeight() + bufferedImage.getHeight()/2 + "");
+            ((TextField) JavaFX.fromId("height_field"))
+                    .setText(bufferedImage.getHeight() + bufferedImage.getHeight() / 2 + "");
             //Sets the background type value in the box
             ComboBox box = (ComboBox) JavaFX.fromId("bgtype_combobox");
             box.getItems().addAll("Fill", "Circle");
             box.getSelectionModel().select(0);
         }
-        catch(IOException e)
-        {
+        catch(IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Refreshes the image using the preview
+     */
+    @SuppressWarnings("unchecked")
+    public static void setImage() {
+        //Loads the image
+        BufferedImage image = new FlatImage().setBackground().setImage().applyShadow().getImage();
+        //Sets the preview
+        ((ImageView) JavaFX.fromId("preview_img")).setImage(SwingFXUtils.toFXImage(image, null));
     }
 
     /**
      * Sets a red border
      * @param node Node
      */
-    public static void addError(Node node)
-    {
+    public static void addError(Node node) {
         ObservableList<String> styleClass = node.getStyleClass();
-        if(!styleClass.contains("error"))
-            styleClass.add("error");
+        if(!styleClass.contains("error")) styleClass.add("error");
     }
 
     /**
      * Removes the red border
      * @param node Node
      */
-    public static void removeError(Node node)
-    {
+    public static void removeError(Node node) {
         ObservableList<String> styleClass = node.getStyleClass();
-        if(styleClass.contains("error"))
-            styleClass.remove("error");
+        if(styleClass.contains("error")) styleClass.remove("error");
     }
 }

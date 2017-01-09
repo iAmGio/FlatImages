@@ -28,8 +28,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class FlatImage
-{
+public class FlatImage {
+
     private Parent root;
     private BufferedImage img;
     private int width;
@@ -42,8 +42,7 @@ public class FlatImage
     private BufferedImage image;
     private BufferedImage built;
 
-    public FlatImage()
-    {
+    public FlatImage() {
         //Selected color
         javafx.scene.paint.Color color = ((ColorPicker) JavaFX.fromId("color_picker")).getValue();
 
@@ -51,25 +50,23 @@ public class FlatImage
         this.img = Utils.bufferedImage;
         this.width = Integer.parseInt(((TextField) JavaFX.fromId("width_field")).getText());
         this.height = Integer.parseInt(((TextField) JavaFX.fromId("height_field")).getText());
-        this.color = new Color(
-                (float) color.getRed(), (float) color.getGreen(), (float) color.getBlue());
+        this.color = new Color((float) color.getRed(), (float) color.getGreen(), (float) color.getBlue());
         this.length = Integer.parseInt(((TextField) JavaFX.fromId("shadow_field")).getText());
-        this.backgroundType = BackgroundType.valueOf(((ComboBox) JavaFX.fromId("bgtype_combobox"))
-                .getSelectionModel().getSelectedItem().toString().toUpperCase());
+        this.backgroundType = BackgroundType
+                .valueOf(((ComboBox) JavaFX.fromId("bgtype_combobox")).getSelectionModel().getSelectedItem().toString()
+                        .toUpperCase());
     }
 
     /**
      * Sets the background
      * @return this
      */
-    public FlatImage setBackground()
-    {
+    public FlatImage setBackground() {
         //Creates a new image
         BufferedImage bg = new BufferedImage(width, height, BufferedImage.TRANSLUCENT);
         Graphics2D graphics = bg.createGraphics();
 
-        switch(backgroundType)
-        {
+        switch(backgroundType) {
             case FILL:
                 //Paints it
                 graphics.setPaint(color);
@@ -78,8 +75,7 @@ public class FlatImage
             case CIRCLE:
                 //Draws a circle
                 graphics.setColor(color);
-                graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                        RenderingHints.VALUE_ANTIALIAS_ON);
+                graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                 graphics.fill(new Ellipse2D.Float(0, 0, width, height));
         }
 
@@ -92,16 +88,13 @@ public class FlatImage
      * Draws the image
      * @return this
      */
-    public FlatImage setImage()
-    {
+    public FlatImage setImage() {
         //Creates a new blank image
         BufferedImage flat = new BufferedImage(width, height, BufferedImage.TRANSLUCENT);
         Graphics2D graphics = flat.createGraphics();
 
         //Draws the uploaded one
-        graphics.drawImage(
-                img, flat.getWidth() / 50, flat.getHeight() / 50, img.getWidth(), img.getHeight(),
-                null);
+        graphics.drawImage(img, flat.getWidth() / 50, flat.getHeight() / 50, img.getWidth(), img.getHeight(), null);
 
         this.image = flat;
 
@@ -112,8 +105,7 @@ public class FlatImage
      * Applies the shadow
      * @return this
      */
-    public FlatImage applyShadow()
-    {
+    public FlatImage applyShadow() {
         BufferedImage image = this.image;
 
         //Gets the opacity level from the slider
@@ -122,8 +114,7 @@ public class FlatImage
         double endX = width, endY = height;
 
         for(int y = 1; y < height; y++)
-            for(int x = 1; x < width; x++)
-            {
+            for(int x = 1; x < width; x++) {
                 //Now we can select all the pixels
                 if(image.getRGB(x - 1, y - 1) != 0 && image.getRGB(x, y) == 0 //Checks if the high left pixel is colored
                         && bg.getRGB(x, y) != 0) //Checks if the current pixel in the background is colored
@@ -144,31 +135,35 @@ public class FlatImage
     }
 
     /**
-     * Builds all and creates the file
+     * @return Built image
      */
-    public void build()
-    {
+    public BufferedImage getImage() {
         //Loads the background
         BufferedImage finalImage = bg;
         //Draws the final image
-        finalImage.createGraphics().drawImage(
-                image, width / 20, height / 20, image.getWidth(), image.getHeight(),
-                null);
+        finalImage.createGraphics()
+                .drawImage(image, width / 20, height / 20, image.getWidth(), image.getHeight(), null);
+        return finalImage;
+    }
 
+    /**
+     * Builds all and creates the file
+     */
+    public void build() {
         File imageFile = Utils.imageFile;
 
+        BufferedImage image = getImage();
+
         //Creates the new filename
-        String fileName = imageFile.getParent() + File.separator +
-                imageFile.getName().replace(" ", "_").replace(".png", "") + "_flat.png";
-        try
-        {
+        String fileName = imageFile.getParent() + File.separator + imageFile.getName().replace(" ", "_")
+                .replace(".png", "") + "_flat.png";
+        try {
             //Writes and saves the image
-            ImageIO.write(finalImage, "png", new File(fileName));
+            ImageIO.write(image, "png", new File(fileName));
             //Sets the final scene
             setFinalScene(fileName);
         }
-        catch(IOException e)
-        {
+        catch(IOException e) {
             Text errorTitle = new Text("\n Oops!");
             errorTitle.setFont(javafx.scene.text.Font.font("Segoe UI", 20));
             errorTitle.setFill(javafx.scene.paint.Paint.valueOf("ff0000"));
@@ -177,8 +172,8 @@ public class FlatImage
             error.setFont(javafx.scene.text.Font.font("Segoe UI", 15));
             error.setFill(javafx.scene.paint.Paint.valueOf("ff0000"));
 
-            ((Pane) root).setBackground(new Background(
-                    new BackgroundFill(javafx.scene.paint.Paint.valueOf("fff"), null, null)));
+            ((Pane) root).setBackground(new Background(new BackgroundFill(javafx.scene.paint.Paint
+                    .valueOf("fff"), null, null)));
             ((Pane) root).getChildren().addAll(errorTitle, error);
         }
     }
@@ -187,8 +182,7 @@ public class FlatImage
      * Loads the final scene
      * @param fileName File name
      */
-    private void setFinalScene(String fileName)
-    {
+    private void setFinalScene(String fileName) {
         //Loads the new scene
         Parent root = FXML.load(FlatImages.class, "scenes/FinalScene.fxml");
         Scene scene = new Scene(root, 950, 600);

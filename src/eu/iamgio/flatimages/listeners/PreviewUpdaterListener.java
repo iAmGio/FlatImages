@@ -8,14 +8,11 @@ import eu.iamgio.libfx.api.events.mouse.MousePressEvent;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
-import eu.iamgio.libfx.api.filemanagers.FileChooser;
-
-import java.io.File;
 
 /**
- * Created by Gio on 20/12/2016.
+ * Created by Gio on 09/01/2017.
  */
-public class UploaderListener implements Listener {
+public class PreviewUpdaterListener implements Listener {
 
     @EventHandler
     public void click(MousePressEvent e) {
@@ -23,12 +20,8 @@ public class UploaderListener implements Listener {
             Button button = JavaFX.fromNode(((Node) e.getMouseEvent().getTarget()), Button.class);
             if(button == null) return;
 
-            if(button.getId().equals("upload_button")) {
-                //Loads the file from the chooser
-                FileChooser fileChooser = new FileChooser();
-                File file = fileChooser.choose("png");
-
-                if(file != null) Utils.setImage(file);
+            if(button.getId().equals("preview_button")) {
+                Utils.setImage();
             }
         }
     }

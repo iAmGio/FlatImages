@@ -2,6 +2,7 @@ package eu.iamgio.flatimages;
 
 import eu.iamgio.flatimages.listeners.CreateListener;
 import eu.iamgio.flatimages.listeners.DropListener;
+import eu.iamgio.flatimages.listeners.PreviewUpdaterListener;
 import eu.iamgio.flatimages.listeners.UploaderListener;
 import eu.iamgio.libfx.api.CSS;
 import eu.iamgio.libfx.api.FXML;
@@ -17,10 +18,10 @@ import javafx.stage.Stage;
  *
  * Main class
  */
-public class FlatImages extends Application
-{
+public class FlatImages extends Application {
+
     //Actual version
-    static final String VERSION = "2.1.0";
+    static final String VERSION = "2.2.0";
 
     //Image is processing
     public static boolean process = false;
@@ -29,8 +30,7 @@ public class FlatImages extends Application
     static Stage stage;
 
     @Override
-    public void start(Stage primaryStage) throws Exception
-    {
+    public void start(Stage primaryStage) throws Exception {
         //Loads the main root from the FXML
         Parent root = FXML.load(getClass(), "scenes/MainScene.fxml");
         Scene scene = new Scene(root, 950, 600);
@@ -43,6 +43,7 @@ public class FlatImages extends Application
         //Registers the events
         JavaFX.getEventManager().registerEvents(new UploaderListener());
         JavaFX.getEventManager().registerEvents(new CreateListener());
+        JavaFX.getEventManager().registerEvents(new PreviewUpdaterListener());
         JavaFX.getEventManager().registerEvents(new DropListener());
 
         //Shows the scene
@@ -53,8 +54,7 @@ public class FlatImages extends Application
         stage = primaryStage;
     }
 
-    public static void main(String...args)
-    {
+    public static void main(String... args) {
         launch(args);
     }
 }

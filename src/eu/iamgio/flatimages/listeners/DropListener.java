@@ -12,20 +12,16 @@ import java.io.File;
 /**
  * Created by Gio on 20/12/2016.
  */
-public class DropListener implements Listener
-{
+public class DropListener implements Listener {
+
     @EventHandler
-    public void onFileDrop(FileDropEvent e)
-    {
-        if(FlatImages.process)
-            return;
+    public void onFileDrop(FileDropEvent e) {
+        if(FlatImages.process) return;
 
         Dragboard db = e.getDragboard();
-        if(e.success())
-        {
+        if(e.success()) {
             File file = db.getFiles().get(0);
-            if(file.getName().endsWith(".png"))
-                Utils.setImage(file);
+            if(file.getName().endsWith(".png")) Utils.setImage(file);
         }
     }
 }
