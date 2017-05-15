@@ -1,22 +1,91 @@
-.background, .check-box {
-    -fx-background-color: #16A086;
+/*Palette: http://flatcolors.net/palette/731-web-flat */
+
+.background {
+    -fx-background-color: #EEEEEE;
 }
 
-.final-background {
-    -fx-background-color: #1bbc9b
+.rectangle-background {
+    -fx-fill: #fbfbfb;
+    -fx-stroke-width: 0;
+}
+
+.title {
+    -fx-font-family: "Lemon/Milk";
+    -fx-text-fill: #3F3F3F;
+    -fx-font-size: 47;
+    -fx-alignment: center;
+}
+
+.versiontext {
+    -fx-font-size: 20;
+    -fx-alignment: center-left;
+}
+
+.smalltext {
+    -fx-text-fill: #3F3F3F;
+    -fx-font-size: 22;
+    -fx-alignment: center-right;
+}
+
+.lightblue {
+    -fx-fill: #47D2E9;
+    -fx-stroke-width: 0;
+}
+
+.button {
+    -fx-background-color: white;
+    -fx-font-size: 20;
+    -fx-text-fill: #3F3F3F;
+}
+
+.text-field {
+    -fx-background-color: white;
+}
+
+.color-picker {
+    -fx-background-color: white;
+    -fx-font-size: 17;
+    -fx-text-fill: #3F3F3F;
+}
+
+.check-box .box {
+    -fx-background-color: white;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: black;
+}
+
+.slider .track {
+    -fx-background-color: #46CEE4;
+    -fx-pref-height: 2;
+}
+
+.slider .thumb {
+    -fx-background-color: #38A6B8;
+}
+
+.dropshadow {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0.0, 0, 2);
+}
+
+.message-bg {
+    -fx-fill: #385BB8;
+    -fx-stroke-width: 0;
+}
+
+.message-text {
+    -fx-text-fill: white;
+    -fx-font-size: 18;
+}
+
+.contact {
+    -fx-font-size: 16;
+    -fx-text-fill: white;
+    -fx-alignment: center;
 }
 
 .error {
-    -fx-border-color: red;
-    -fx-focus-color: red;
-}
-
-.text {
-    -fx-text-fill: #00FFCB;
-    -fx-font-family: "Segoe UI";
-    -fx-font-size: 11pt;
-}
-
-.text-field, .button, .color-picker, .combo-box {
-    -fx-background-color: #FFF;
+    -fx-border-width: 2;
+    -fx-border-color: #D6523C;
 }

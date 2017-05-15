@@ -1,80 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ColorPicker?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Light.Distant?>
-<?import javafx.scene.effect.Lighting?>
-<?import javafx.scene.effect.Shadow?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.Color?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0002288818359" prefWidth="949.9998779296875" styleClass="background" stylesheets="@../stylesheets/styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
-  <children>
-    <Rectangle id="preview_rectangle" arcHeight="5.0" arcWidth="5.0" height="238.25" layoutX="-8.0" layoutY="-8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="" width="974.0">
-      <fill>
-        <Color blue="0.608" green="0.737" red="0.106" fx:id="x1" />
-      </fill>
-    </Rectangle>
-    <ImageView id="preview_img" fitHeight="136.25" fitWidth="181.66666666666666" layoutX="384.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true" style="&#10;">
-      <image>
-        <Image url="@../assets/img.png" />
-      </image>
-    </ImageView>
-    <Text fill="$x1" layoutX="2.0" layoutY="597.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FlatImages by iAmGio">
-      <font>
-        <Font name="Segoe UI" size="15.0" fx:id="x2" />
-      </font>
-    </Text>
-    <TextField id="filepath_field" editable="false" layoutX="287.0" layoutY="276.0" opacity="1.0" prefHeight="48.0" prefWidth="375.0" promptText="" />
-    <Button id="upload_button" layoutX="225.0" layoutY="276.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="53.0" text="..." />
-    <TextField id="width_field" layoutX="285.0" layoutY="363.0" prefWidth="135.0146484375" visible="false">
-         <font>
-            <Font name="Segoe UI Light" size="15.0" />
-         </font></TextField>
-    <TextField id="height_field" layoutX="430.0" layoutY="363.0" prefWidth="136.0" visible="false">
-         <font>
-            <Font name="Segoe UI Light" size="15.0" />
-         </font></TextField>
-    <Label id="size_text" layoutX="74.0" layoutY="369.0" styleClass="text" text="What is the desidered size?" visible="false" />
-    <ColorPicker id="color_picker" layoutX="285.0" layoutY="400.0" styleClass="check-box" visible="false" />
-    <Label id="bgcolor_text" layoutX="5.0" layoutY="405.0" styleClass="text" text="What background color do you want?" visible="false" />
-    <TextField id="shadow_field" layoutX="284.0" layoutY="436.0" prefWidth="115.0" text="100" visible="false">
-         <font>
-            <Font name="Segoe UI Light" size="15.0" />
-         </font></TextField>
-    <Label id="shadow_text" layoutX="10.0" layoutY="442.0" styleClass="text" text="What's the shadow length you want?" visible="false" />
-    <Label id="shading_text" layoutX="142.0" layoutY="476.0" styleClass="text" text="Enable shading?" textAlignment="RIGHT" visible="false" />
-    <CheckBox id="shading_checkbox" layoutX="285.0" layoutY="477.0" mnemonicParsing="false" selected="true" text="" visible="false" />
-    <Label id="opacity_text" layoutX="17.0" layoutY="512.0" styleClass="text" text="What shadow opacity do you want?" visible="false" />
-    <Slider id="opacity_slider" layoutX="278.0" layoutY="509.0" prefWidth="236.0" value="85.0" visible="false">
-      <effect>
-        <Lighting diffuseConstant="2.0" specularConstant="2.0" specularExponent="13.968253968253968" surfaceScale="0.0">
-          <bumpInput>
-            <Shadow />
-          </bumpInput>
-          <light>
-            <javafx.scene.effect.Light.Distant />
-          </light>
-        </Lighting>
-      </effect>
-    </Slider>
-      <Label id="opacity_text" layoutX="17.0" layoutY="550.0" styleClass="text" text="What background type do you want?" visible="false" />
-      <ComboBox id="bgtype_combobox" layoutX="280.0" layoutY="545.0" prefWidth="150.0" styleClass="combo-box" visible="false" />
-      <Button id="preview_button" layoutX="743.0" layoutY="335.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="108.0" text="Preview" visible="false">
-         <font>
-            <Font name="Segoe UI" size="15.0" fx:id="x21" />
-         </font>
-      </Button>
-    <Button id="create_button" font="$x2" layoutX="743.0" layoutY="276.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="108.0" text="Create!" visible="false" />
-  </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="950.0" styleClass="background" stylesheets="@../stylesheets/styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.iamgio.flatimages.controllers.MainController">
+   <children>
+      <Rectangle id="strip" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="542.0" layoutX="-415.0" layoutY="-312.0" rotate="-45.0" stroke="BLACK" strokeType="INSIDE" width="533.0">
+         <styleClass>
+            <String fx:value="lightblue" />
+            <String fx:value="dropshadow" />
+         </styleClass>
+      </Rectangle>
+      <VBox id="contacts_vbox" fx:id="strip" layoutX="-61.0" layoutY="30.0" opacity="0.0" prefHeight="65.0" prefWidth="248.0" rotate="-45.0" styleClass="dropshadow">
+         <children>
+            <Label prefHeight="31.0" prefWidth="248.0" style="-fx-font-weight: bold; -fx-font-size: 25;" styleClass="contact" text="iAmGio" />
+            <Label prefHeight="29.0" prefWidth="254.0" styleClass="contact" text="Telegram: @iAmGio_O" />
+         </children>
+      </VBox>
+      <Rectangle id="upsect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="138.0" layoutY="-150" stroke="BLACK" strokeType="INSIDE" styleClass="rectangle-background" width="950.0">
+         <effect>
+            <DropShadow color="#00000080" height="30.0" radius="12.25" />
+         </effect>
+      </Rectangle>
+      <Label id="title" layoutX="330.0" layoutY="-113.0" styleClass="title" text="FlatImages" />
+      <Label id="version" layoutX="625.0" layoutY="-104.0" text="3.0.0">
+         <styleClass>
+            <String fx:value="title" />
+            <String fx:value="versiontext" />
+         </styleClass>
+      </Label>
+      <Button id="upload_btn" fx:id="uploadButton" layoutX="292.0" layoutY="339.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="62.0" styleClass="dropshadow" text="..." />
+      <TextField id="path_field" editable="false" layoutX="367.0" layoutY="339.0" prefHeight="52.0" prefWidth="291.0" promptText="Upload or drop an image" styleClass="dropshadow" />
+      <Label id="imagesize_txt" layoutX="-2.0" layoutY="372.0" opacity="0.0" prefHeight="32.0" prefWidth="291.0" styleClass="smalltext" text="Image size" visible="false" />
+      <TextField id="width_field" layoutX="318.0" layoutY="365.0" opacity="0.0" prefHeight="42.0" prefWidth="173.0" promptText="Width" styleClass="dropshadow" visible="false" />
+      <TextField id="height_field" layoutX="519.0" layoutY="365.0" opacity="0.0" prefHeight="42.0" prefWidth="173.0" promptText="Height" styleClass="dropshadow" visible="false" />
+      <Label id="background_txt" layoutX="-2.0" layoutY="432.0" opacity="0.0" prefHeight="32.0" prefWidth="291.0" styleClass="smalltext" text="Background color" visible="false" />
+      <ColorPicker id="colorpicker" layoutX="318.0" layoutY="425.0" opacity="0.0" prefHeight="42.0" prefWidth="173.0" styleClass="dropshadow" visible="false" />
+      <Label id="shadowlength_txt" layoutX="-2.0" layoutY="492.0" opacity="0.0" prefHeight="32.0" prefWidth="291.0" styleClass="smalltext" text="Shadow length" visible="false" />
+      <TextField id="shadowlength_field" layoutX="318.0" layoutY="485.0" opacity="0.0" prefHeight="42.0" prefWidth="173.0" promptText="Length" styleClass="dropshadow" text="100" visible="false" />
+      <Label id="fading_txt" layoutX="-2.0" layoutY="552.0" opacity="0.0" prefHeight="32.0" prefWidth="291.0" styleClass="smalltext" text="Enable shadow fading" visible="false" />
+      <CheckBox id="fading_checkbtn" layoutX="318.0" layoutY="556.0" mnemonicParsing="false" opacity="0.0" prefWidth="49.0" selected="true" styleClass="dropshadow" visible="false" />
+      <Label id="shadowopacity_txt" layoutX="-2.0" layoutY="612.0" opacity="0.0" prefHeight="32.0" prefWidth="291.0" styleClass="smalltext" text="Shadow opacity" visible="false" />
+      <Slider id="shadowopacity_slider" blockIncrement="5.0" layoutX="318.0" layoutY="617.0" opacity="0.0" prefHeight="18.0" prefWidth="173.0" value="75.0" visible="false" />
+      <Button id="create_btn" fx:id="createButton" layoutX="737.0" layoutY="574.0" mnemonicParsing="false" opacity="0.0" prefHeight="65.0" prefWidth="148.0" styleClass="dropshadow" text="Create!" visible="false" />
+      <ImageView id="img" fitHeight="230.0" fitWidth="324.0" layoutX="350.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Rectangle id="message_bg" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="119.0" layoutX="-5.0" layoutY="-133.0" stroke="BLACK" strokeType="INSIDE" width="961.0">
+         <styleClass>
+            <String fx:value="message-bg" />
+            <String fx:value="dropshadow" />
+         </styleClass>
+      </Rectangle>
+      <Label id="message_text" ellipsisString="" layoutX="32.0" layoutY="-83.0" prefHeight="21.0" prefWidth="888.0" styleClass="message-text" text="text" />
+      <Label id="signature" layoutX="10.0" layoutY="640.0" opacity="0.3" text="iAmGio © 2016-2017" />
+   </children>
 </AnchorPane>
