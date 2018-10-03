@@ -40,8 +40,8 @@ public class MessageAnnouncer {
     }
 
     private void wait(AnimationHandler handler) {
-        Animation wait = new Animation(Animation.Type.OPACITY, 1, waitTime, false);
-        wait.play(Components.messages[0]);
-        wait.setOnAnimationCompleted(handler);
+        Animation waitAnimation = new Animation(Animation.Type.OPACITY, 1, waitTime, false);
+        waitAnimation.play(Components.messages[0]);
+        waitAnimation.setOnAnimationCompleted(handler);
     }
 }
